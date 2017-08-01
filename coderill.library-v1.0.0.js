@@ -130,3 +130,136 @@ function compare(obj, key, by = "asc") {
 		return 0;
 	});
 }
+
+
+
+
+
+
+
+
+
+/**
+ * find the object index in an array
+ * useage: findObjectIndex(container, single)
+ * parameters:
+ 	container: 	Required. Specifies the array.
+	single: 	Required. Specifies the object.
+ *
+ * return: number. if find the object then return the index of the object. Else return -1
+ *
+ */
+function findObjectIndex(container, single) {
+	var objectLength 	= Object.keys(single).length,
+		result 			= [],
+		resultset 		= [];
+
+	[].forEach.call(container, function(row, index) {
+		var eachObjectKeys 	= Object.keys(row),
+			data 			= [];
+
+		[].forEach.call(eachObjectKeys, function(item, key){
+			data[key] = false;
+
+			if (container[index][item] == single[item]) {
+				data[key] = true;
+			}
+		});
+
+		result.push(data);
+	});
+
+	[].forEach.call(result, function(item, key) {
+		resultset.push(dupCounter(item, true));
+	});
+
+	return resultset.indexOf(objectLength);
+}
+
+
+
+
+
+
+
+
+
+
+/**
+ * count duplicate value in an array
+ * useage: dupCounter(container, value = null)
+ * parameters:
+ 	container: Required. Specifies the array.
+ 	value: Optional. Specifies the value of an array.
+ * return: number or, object:
+ *
+ */
+function dupCounter(container, value = null) {
+	var counter = (value == null || value == "") ? {} : 0,
+		i = j = 0;
+
+	for(i; i < container.length; i++) {
+		if(value == null || value == "") {
+			counter[container[i]] = 0;
+
+			for(j; j < container.length; j++) {
+				if(container[i] == container[j]){ counter[container[i]] += 1; }
+			}
+		} else {
+			if(container[i] == value) { counter += 1; }
+		}
+	}
+
+	return counter;
+}
+
+
+
+
+
+
+
+
+/**
+ * The str_pad() function pads a string to a new length
+ * useage: str_pad(str, length, symbol, direction)
+ * parameters:
+ 	'str'			Required. Specifies the string to pad.
+ 	'length' 		Required. Specifies the new string length. If this value is less than the original length of the string, nothing will be done.
+ 	'symbol' 		Required. Specifies the string to use for padding. Default is whitespace
+ 	'direction'		Optional. Specifies what side to pad the string.
+		Possible values:
+			'both' - Pad to both sides of the string. If not an even number, the right side gets the extra padding
+			'left' - Pad to the left side of the string. (This is default)
+			'right' - Pad to the right side of the string.
+ * return: string
+ *
+ */
+function str_pad(str, len, symbol, direction = "l") {
+	// set the default variables
+	var symbolArray = [],
+		mainString 	= null,
+		padString	= null;
+
+	for (var i = 0; i < len-str.length; i++) {
+		symbolArray.push(symbol);
+	}
+
+	mainString = padString = symbolArray.join("");
+
+	if(direction === "l") {
+		mainString = symbolArray.join("") + str;
+	} else if(direction === "r") {
+		mainString = str + symbolArray.join("");
+	} else if(direction === "b") {
+		var middle = Math.ceil(padString.length / 2),
+			prefix = padString.substr(middle, padString.length),
+			suffix = padString.substr(0, middle);
+
+		mainString = prefix + str + suffix;
+	} else {
+		mainString = null;
+	}
+
+	return mainString;
+}
