@@ -30,11 +30,18 @@ var details = [
 	{brand: "themerill", model: "105", price: 23.75},
 ];
 
-var singleObj = {brand: "themerill", model: "105", price: 23.75};
+var singleObj = {brand: "apprill", model: "104", price: 9.45};
 console.log(findObjectIndex(details, singleObj));
 
 // string pad
-console.log(str_pad("111", 5, "*", "b"));
+console.log(strPad("111", 5, "*", "b"));
 
-var my_arr = ["a","b","c","c","b","b","b","b","c","c","a","a","a","a","a","a","c","c","c","c","c", 1, 2, 3, 5, 4, 1, 1, 1];
+var my_arr = ["a", "b", "c", "c", "b", "b", "c", "c", "a", "a", "a", "c", "c", 1, 2, 3, 5, 4, 1, 1, 1];
 console.log(dupCounter(my_arr, 1));
+
+var year = 2020;
+console.log(leapYear(year));
+
+var str = "Hello World";
+console.log(strReverse(str));
+console.log(strReverse(10));

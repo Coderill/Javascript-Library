@@ -221,8 +221,8 @@ function dupCounter(container, value = null) {
 
 
 /**
- * The str_pad() function pads a string to a new length
- * useage: str_pad(str, length, symbol, direction)
+ * The strPad() function pads a string to a new length
+ * useage: strPad(str, length, symbol, direction)
  * parameters:
  	'str'			Required. Specifies the string to pad.
  	'length' 		Required. Specifies the new string length. If this value is less than the original length of the string, nothing will be done.
@@ -235,7 +235,7 @@ function dupCounter(container, value = null) {
  * return: string
  *
  */
-function str_pad(str, len, symbol, direction = "l") {
+function strPad(str, len, symbol, direction = "l") {
 	// set the default variables
 	var symbolArray = [],
 		mainString 	= null,
@@ -262,4 +262,52 @@ function str_pad(str, len, symbol, direction = "l") {
 	}
 
 	return mainString;
+}
+
+
+
+
+
+
+
+
+
+
+ /**
+  * check the leap year
+  * useage: leapYear(year)
+  * parameters:
+  		year: Optional. Specifies the year.
+  * return: 0 or 1. is leap year return 1 else return 0
+  */
+function leapYear(year = null) {
+	var x = null,
+		y = (year == null || y == "") ? new Date().getFullYear() : year;
+
+	x = (y % 100 === 0) ? (y % 400 === 0) : (y % 4 === 0);
+	return x;
+}
+
+
+
+
+
+
+
+
+
+
+/**
+ * reverse the string
+ * useage: strReverse(container)
+ * parameters:
+ 	container: Required. Specifies the string.
+ * return: string
+ */
+function strReverse(container) {
+	if(typeof container == "string") {
+		return container.split("").reverse().join("");
+	}
+
+	return "This is not string.";
 }
