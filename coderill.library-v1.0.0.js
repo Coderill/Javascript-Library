@@ -1,13 +1,13 @@
-/** 
+/**
  * Coderill Javascript Library v1.0.0
- * 
+ *
  * Author: Coderill
  * URI: http://coderill.com
  * Created at: 2017, February 28
  * Updated at: 2017, February 28
  * Version: 1.0.0
  * License: MIT
- * 
+ *
  * Description: This is a open source software. Released under the MIT license. Copyright 2015-2016 Coderill.
  */
 
@@ -18,7 +18,7 @@
  * usages: ucwords(string)
  * Returns a string with the first character of each word
  * It takes 1 parameter of string
- * 
+ *
  */
 function ucwords(str) {
     txt = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
@@ -38,7 +38,7 @@ function ucwords(str) {
  * usages: ucfirst(string)
  * Returns a string with the first character of given string
  * It takes 1 parameter of string
- * 
+ *
  */
 function ucfirst(str) {
     var f = str.charAt(0).toUpperCase();
@@ -55,7 +55,7 @@ function ucfirst(str) {
  * usages: ucSentence(string)
  * Returns a string with the first character of each sentence of given string
  * It takes 1 parameter of string
- * 
+ *
  */
 function ucSentence(str) {
     return str.replace(/.+?[\.\?\!](\s|$)/g, function (txt) {
@@ -74,7 +74,7 @@ function ucSentence(str) {
  * usages: strTrim(string)
  * Strip whitespace from the beginning and end of a string
  * It takes 1 parameter of string
- * 
+ *
  * NB: if browser not support tream() method
  */
 function strTrim(str) {
@@ -91,9 +91,42 @@ function strTrim(str) {
  * usages: strReplace(search, replace, string)
  * Replace all occurrences of the search string with the replacement string
  * It takes 3 parameteres of string
- * 
+ *
  */
 function strReplace(search, replace, str) {
     var txt = str.replace(/^\s+|\s+$/gm, '');
     return txt.split(search).join(replace);
+}
+
+
+
+
+
+
+
+
+
+/**
+ * usages: compare(array, field)
+ * It takes 3 parameteres of array of array:object, key:string and by:string
+ * This is a sorting system
+ *
+ * return:
+ */
+function compare(obj, key, by = "asc") {
+	return obj.sort(function(x, y) {
+		if(by === "asc") {		// asc
+			if (x[key] < y[key])
+				return -1;
+			if (x[key] > y[key])
+				return 1;
+		} else {				// desc
+			if (x[key] > y[key])
+				return -1;
+			if (x[key] < y[key])
+				return 1;
+		}
+
+		return 0;
+	});
 }
