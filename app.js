@@ -45,3 +45,7 @@ console.log(leapYear(year));
 var str = "Hello World";
 console.log(strReverse(str));
 console.log(strReverse(10));
+
+// email validation
+var email = "bjayanta.neo@gmail.com";
+console.log(isEmail(email));

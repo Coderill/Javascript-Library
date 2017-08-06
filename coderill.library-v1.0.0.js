@@ -311,3 +311,24 @@ function strReverse(container) {
 
 	return "This is not string.";
 }
+
+
+
+
+
+
+
+
+
+/**
+ * email validation
+ * useage: isEmail(container)
+ * parameters:
+ 	container: Required. Specifies the string(email).
+ * return: boolean
+ */
+function isEmail(container) {
+	var patteran = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+	return patteran.test(container);
+}
