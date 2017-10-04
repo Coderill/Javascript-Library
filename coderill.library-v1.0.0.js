@@ -332,3 +332,46 @@ function isEmail(container) {
 
 	return patteran.test(container);
 }
+
+
+
+
+
+
+
+
+
+/**
+ * browser detection
+ * useage: getBrowser()
+ *
+ * return: name of the browser
+ */
+function getBrowser() {
+    var browser = null;
+
+    // Opera 8.0+
+    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    // Firefox 1.0+
+    var isFirefox = typeof InstallTrigger !== 'undefined';
+    // Safari 3.0+ "[object HTMLElementConstructor]"
+    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+    // Edge 20+
+    var isEdge = !isIE && !!window.StyleMedia;
+    // Chrome 1+
+    var isChrome = !!window.chrome && !!window.chrome.webstore;
+    // Blink engine detection
+    var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+    if(isFirefox) { browser = "Firefox"; }
+    if(isChrome) { browser = "Chrome"; }
+    if(isSafari) { browser = "Safari"; }
+    if(isOpera) { browser = "Opera"; }
+    if(isIE) { browser = "IE"; }
+    if(isEdge) { browser = "Edge"; }
+    if(isBlink) { browser = "Blink"; }
+
+    return browser;
+}
